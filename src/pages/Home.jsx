@@ -20,7 +20,7 @@ export default function Home() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.7, duration: 1 }}
         >
-          <span className="typing-effect">Aspiring Data Analyst &amp; Security Enthusiast</span>
+          <span className="typing-effect break-words max-w-full inline-block">Aspiring Data Analyst &amp; Security Enthusiast</span>
         </motion.p>
         <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
           <button className="mt-6 px-4 py-3 sm:px-8 rounded-full bg-matrix-green text-cyber-bg font-mono font-bold shadow-glow border border-matrix-green/60 hover:bg-cyber-accent hover:text-cyber-bg transition-all animate-glow text-base sm:text-lg w-full sm:w-auto">

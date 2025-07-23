@@ -19,7 +19,7 @@ const names = [
 
 export default function About() {
   return (
-    <main className="min-h-screen flex items-center justify-center px-4 text-center relative overflow-hidden">
+    <main className="min-h-screen flex items-center justify-center px-4 text-center relative overflow-hidden mt-24">
       {/* Animated multilingual name background */}
       <div className="absolute inset-0 z-20 pointer-events-none select-none">
         {names.map((n, i) => {
