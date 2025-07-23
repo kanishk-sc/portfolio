@@ -20,7 +20,9 @@ export default function Home() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.7, duration: 1 }}
         >
-          <span className="typing-effect break-words w-full max-w-full inline-block text-center" style={{ wordBreak: 'break-word', whiteSpace: 'normal' }}>Aspiring Data Analyst &amp; Security Enthusiast</span>
+          {/* Typing effect on desktop, fade-in on mobile */}
+          <span className="hidden sm:inline typing-effect break-words w-full max-w-full inline-block text-center" style={{ wordBreak: 'break-word', whiteSpace: 'normal' }}>Aspiring Data Analyst &amp; Security Enthusiast</span>
+          <span className="inline sm:hidden w-full max-w-full text-center" style={{ wordBreak: 'break-word', whiteSpace: 'normal' }}>Aspiring Data Analyst &amp; Security Enthusiast</span>
         </motion.p>
         <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
           <button className="mt-6 px-4 py-3 sm:px-8 rounded-full bg-matrix-green text-cyber-bg font-mono font-bold shadow-glow border border-matrix-green/60 hover:bg-cyber-accent hover:text-cyber-bg transition-all animate-glow text-base sm:text-lg w-full sm:w-auto">
