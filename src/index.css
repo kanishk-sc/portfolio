@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-cyber-bg text-matrix-green font-mono min-h-screen transition-colors duration-500;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-mono;
+}
+
+/* Matrix rain background placeholder */
+.matrix-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.25;
+}
+
+/* Code-glow effect */
+.code-glow {
+  @apply text-matrix-green animate-glow;
+}
