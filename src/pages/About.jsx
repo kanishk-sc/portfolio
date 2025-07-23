@@ -70,7 +70,7 @@ export default function About() {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="bg-cyber-bg/5 backdrop-blur-sm px-8 py-10 rounded-xl shadow-glow space-y-8 flex flex-col items-center border border-matrix-green/30 max-w-2xl relative z-30 mx-auto"
+        className="bg-cyber-bg/10 sm:bg-cyber-bg/30 backdrop-blur-sm px-8 py-10 rounded-xl shadow-glow space-y-8 flex flex-col items-center border border-matrix-green/30 max-w-2xl relative z-30 mx-auto"
       >
         <h2 className="text-3xl md:text-4xl font-mono font-bold code-glow mb-4">About Me</h2>
         <p className="text-lg md:text-xl font-mono text-matrix-green mb-6">
