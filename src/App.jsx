@@ -26,7 +26,7 @@ function MatrixRainBackground() {
     const fontSize = 18;
     const columns = Math.floor(width / fontSize);
     const drops = Array(columns).fill(1);
-    const matrixChars = "अआइईउऊऋएऐओऔकखगघचछजझटठडढतथदधनपफबभमयरलवशषसहABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789कनिष्कसिंहचौहान";
+    const matrixChars = "अआइईउऊऋएऐओऔकखगघचछजझटठडढतथदधनपफबभमयरलवशषसह१२३४५६७८९१०कनिष्कसिंहचौहान";
 
     let frame = 0;
     const speed = 1; // Lower = faster
