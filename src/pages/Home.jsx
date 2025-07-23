@@ -15,12 +15,12 @@ export default function Home() {
         </h1>
         {/* Typing effect for role */}
         <motion.p
-          className="text-base sm:text-lg md:text-2xl text-matrix-green font-mono mt-2 mb-4"
+          className="text-base sm:text-lg md:text-2xl text-matrix-green font-mono mt-2 mb-4 w-full text-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.7, duration: 1 }}
         >
-          <span className="typing-effect break-words max-w-full inline-block">Aspiring Data Analyst &amp; Security Enthusiast</span>
+          <span className="typing-effect break-words w-full max-w-full inline-block text-center">Aspiring Data Analyst &amp; Security Enthusiast</span>
         </motion.p>
         <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
           <button className="mt-6 px-4 py-3 sm:px-8 rounded-full bg-matrix-green text-cyber-bg font-mono font-bold shadow-glow border border-matrix-green/60 hover:bg-cyber-accent hover:text-cyber-bg transition-all animate-glow text-base sm:text-lg w-full sm:w-auto">
