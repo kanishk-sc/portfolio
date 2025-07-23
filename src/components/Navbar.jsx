@@ -5,7 +5,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-cyber-bg shadow-lg px-4 py-3 fixed top-0 left-0 w-full z-50 border-b border-matrix-green/30 backdrop-blur-md">
+    <nav className="bg-cyber-bg shadow-lg px-2 py-2 md:px-4 md:py-3 fixed top-0 left-0 w-full z-50 border-b border-matrix-green/30 backdrop-blur-md">
       <div className="flex justify-between items-center max-w-6xl mx-auto">
         <h1 className="text-2xl font-mono font-bold code-glow select-none">Kanishk's Portfolio</h1>
 

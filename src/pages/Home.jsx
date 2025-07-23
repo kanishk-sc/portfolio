@@ -8,14 +8,14 @@ export default function Home() {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="bg-cyber-bg/80 backdrop-blur-lg px-8 py-10 rounded-xl shadow-glow space-y-8 flex flex-col items-center border border-matrix-green/20"
+        className="bg-cyber-bg/80 backdrop-blur-lg px-4 py-6 sm:px-8 sm:py-10 rounded-xl shadow-glow space-y-8 flex flex-col items-center border border-matrix-green/20 w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl"
       >
         <h1 className="text-4xl md:text-5xl font-mono font-bold code-glow select-none">
           Kanishk Singh Chauhan
         </h1>
         {/* Typing effect for role */}
         <motion.p
-          className="text-lg md:text-2xl text-matrix-green font-mono mt-2 mb-4"
+          className="text-base sm:text-lg md:text-2xl text-matrix-green font-mono mt-2 mb-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.7, duration: 1 }}
@@ -23,7 +23,7 @@ export default function Home() {
           <span className="typing-effect">Aspiring Data Analyst &amp; Security Enthusiast</span>
         </motion.p>
         <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
-          <button className="mt-6 px-8 py-3 rounded-full bg-matrix-green text-cyber-bg font-mono font-bold shadow-glow border border-matrix-green/60 hover:bg-cyber-accent hover:text-cyber-bg transition-all animate-glow text-lg">
+          <button className="mt-6 px-4 py-3 sm:px-8 rounded-full bg-matrix-green text-cyber-bg font-mono font-bold shadow-glow border border-matrix-green/60 hover:bg-cyber-accent hover:text-cyber-bg transition-all animate-glow text-base sm:text-lg w-full sm:w-auto">
             View Resume
           </button>
         </a>

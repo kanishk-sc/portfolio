@@ -56,10 +56,10 @@ export default function Projects() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 + idx * 0.2 }}
-              className="bg-cyber-bg/80 border border-matrix-green/20 rounded-xl shadow-glow p-6 flex flex-col items-start text-left hover:shadow-2xl hover:border-cyber-accent transition-all"
+              className="bg-cyber-bg/80 border border-matrix-green/20 rounded-xl shadow-glow p-4 sm:p-6 flex flex-col items-start text-left hover:shadow-2xl hover:border-cyber-accent transition-all w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl mx-auto"
             >
-              <h3 className="text-2xl font-mono font-bold code-glow mb-2">{project.title}</h3>
-              <p className="text-matrix-green font-mono mb-3">{project.description}</p>
+              <h3 className="text-xl sm:text-2xl font-mono font-bold code-glow mb-2">{project.title}</h3>
+              <p className="text-matrix-green font-mono mb-3 text-sm sm:text-base">{project.description}</p>
               <div className="flex flex-wrap gap-2 mb-4">
                 {project.tech.map((t) => (
                   <span key={t} className="px-2 py-1 bg-cyber-accent/20 text-cyber-accent font-mono rounded text-xs">{t}</span>
