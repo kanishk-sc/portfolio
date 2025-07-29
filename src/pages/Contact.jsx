@@ -25,19 +25,18 @@ export default function Contact() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("https://formsubmit.co/kanishksinghchauhan5@gmail.com", {
+      const formDataToSend = new FormData();
+      formDataToSend.append("name", formData.name);
+      formDataToSend.append("email", formData.email);
+      formDataToSend.append("subject", formData.subject);
+      formDataToSend.append("message", formData.message);
+
+      const response = await fetch("https://formspree.io/f/mgvzynqa", {
         method: "POST",
+        body: formDataToSend,
         headers: {
-          "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
-          _captcha: false, // Disable FormSubmit's default CAPTCHA
-        }),
       });
 
       if (response.ok) {
