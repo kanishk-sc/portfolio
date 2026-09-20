@@ -1,47 +1,36 @@
-import { motion } from "framer-motion";
-
 const contactLinks = [
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/kanishksinghchauhan/",
-    description: "Connect for professional conversations and opportunities.",
-  },
-  {
-    label: "GitHub",
-    href: "https://github.com/kanishk-sc",
-    description: "Review the source, tests, and engineering decisions behind my work.",
-  },
+  { label: "Email", value: "kanishksingh@usf.edu", href: "mailto:kanishksingh@usf.edu" },
+  { label: "LinkedIn", value: "kanishksinghchauhan", href: "https://linkedin.com/in/kanishksinghchauhan", external: true },
+  { label: "GitHub", value: "kanishk-sc", href: "https://github.com/kanishk-sc", external: true },
 ];
 
 export default function Contact() {
   return (
-    <main className="min-h-screen flex items-center justify-center px-4 py-24 text-center relative overflow-hidden">
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="w-full max-w-2xl mx-auto bg-cyber-bg/80 backdrop-blur-lg px-6 sm:px-8 py-10 rounded-xl shadow-glow border border-matrix-green/20"
-      >
-        <h1 className="text-3xl md:text-4xl font-mono font-bold code-glow mb-4">Contact</h1>
-        <p className="text-cyber-accent font-mono mb-8">
-          The site does not collect or relay messages. Use one of these verified public profiles instead.
-        </p>
-        <div className="grid gap-4 sm:grid-cols-2">
-          {contactLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-lg border border-matrix-green/30 bg-cyber-bg/60 p-5 text-left transition hover:border-cyber-accent hover:bg-cyber-accent/10"
-            >
-              <span className="block text-xl font-bold text-matrix-green">{link.label}</span>
-              <span className="mt-2 block text-sm text-cyber-accent">{link.description}</span>
-              <span className="sr-only"> Opens in a new tab.</span>
+    <section id="contact" className="contact-section" aria-labelledby="contact-title">
+      <div className="section-shell contact-layout">
+        <div>
+          <p className="eyebrow">Contact</p>
+          <h2 id="contact-title">Let’s talk about the work.</h2>
+          <p>For engineering roles and project conversations, use email or one of the verified public profiles below. This site does not collect form submissions.</p>
+          <div className="contact-actions">
+            <a className="button button-light" href="mailto:kanishksingh@usf.edu">Send an email</a>
+            <a className="button button-outline-light" href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+              View résumé<span className="sr-only"> PDF, opens in a new tab</span>
             </a>
-          ))}
+          </div>
         </div>
-      </motion.div>
-    </main>
+        <dl className="contact-list">
+          {contactLinks.map((link) => (
+            <div key={link.label}>
+              <dt>{link.label}</dt>
+              <dd><a href={link.href} target={link.external ? "_blank" : undefined} rel={link.external ? "noopener noreferrer" : undefined}>{link.value}{link.external ? <span className="sr-only"> Opens in a new tab</span> : null}</a></dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+      <footer className="site-footer section-shell">
+        <p>Kanishk Singh Chauhan</p><p>Software · Data · AI Engineering</p>
+      </footer>
+    </section>
   );
 }

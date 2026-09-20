@@ -1,105 +1,31 @@
-import { motion } from "framer-motion";
-
-// List of 'Kanishk Singh Chauhan' in various languages/scripts
-const names = [
-  { text: "Kanishk Singh Chauhan", style: "font-mono text-cyber-accent" },
-  { text: "कनिष्क सिंह चौहान", style: "font-mono text-matrix-green" },
-  { text: "Канишк Сингх Чаухан", style: "font-mono text-cyber-accent" }, // Russian
-  { text: "كانيشك سينغ تشوهان", style: "font-mono text-matrix-green" }, // Arabic
-  { text: "カニシュク・シン・チャウハン", style: "font-mono text-cyber-accent" }, // Japanese Katakana
-  { text: "Κανίσκ Σινγκ Τσάουχαν", style: "font-mono text-matrix-green" }, // Greek
-  { text: "ਕਨਿਸ਼ਕ ਸਿੰਘ ਚੌਹਾਨ", style: "font-mono text-cyber-accent" }, // Punjabi
-  { text: "கனிஷ்க் சிங் சௌஹான்", style: "font-mono text-matrix-green" }, // Tamil
-  { text: "কনিষ্ক সিংহ চৌহান", style: "font-mono text-cyber-accent" }, // Bengali
-  { text: "کنیشک سنگھ چوہان", style: "font-mono text-matrix-green" }, // Urdu
-  { text: "กนิษฐ์ ซิงห์ เชาฮาน", style: "font-mono text-cyber-accent" }, // Thai
-  { text: "קנישק סינג צ'אוהאן", style: "font-mono text-matrix-green" }, // Hebrew
+const experience = [
+  { role: "AI & Data Engineering Intern", organization: "Eximiuz Technologies", dates: "Jun 2026 – Aug 2026", description: "Built Python, FastAPI, and SQL-backed services, integrated OpenAI and Claude APIs for structured workflows, and supported delivery through automated tests and GitHub Actions." },
+  { role: "Incoming Student AV Technician", organization: "University of South Florida · Information Technology", dates: "Oct 2026 – Dec 2026", description: "Selected for a 20-hour-per-week internship supporting classroom technology, audio-visual operations, and technical incident response." },
+  { role: "Student Engagement Leader", organization: "Digital Engagement Center", dates: "Aug 2023 – May 2026", description: "Supported a 70+ member operation and built Python automation that reduced recurring manual effort by approximately 25%." },
 ];
 
 export default function About() {
   return (
-    <main className="min-h-screen flex items-center justify-center px-4 text-center relative overflow-hidden mt-24">
-      {/* Animated multilingual name background */}
-      <div className="absolute inset-0 z-20 pointer-events-none select-none">
-        {names.map((n, i) => {
-          // Center the first two rows, spread the rest
-          let style;
-          if (i < 2) {
-            style = {
-              top: `${8 + i * 7}%`,
-              left: '50%',
-              transform: 'translateX(-50%)',
-              textAlign: 'center',
-              maxWidth: '80vw',
-              opacity: 0.7, // Brighter
-              filter: 'drop-shadow(0 0 24px #39FF14)', // Stronger glow
-            };
-          } else {
-            const isLeft = i % 2 === 0;
-            const top = 22 + (i - 2) * 6;
-            style = {
-              top: `${top}%`,
-              left: isLeft ? '2%' : '65%',
-              textAlign: isLeft ? 'left' : 'right',
-              maxWidth: '40vw',
-              opacity: 0.32,
-            };
-          }
-          return (
-            <motion.div
-              key={n.text}
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: style.opacity, y: 0 }}
-              transition={{ delay: 0.2 * i, duration: 1.5, repeat: Infinity, repeatType: "reverse" }}
-              className={`absolute text-2xl md:text-4xl lg:text-5xl font-bold ${n.style} drop-shadow-[0_0_12px_#39FF14]`}
-              style={{
-                ...style,
-                whiteSpace: 'nowrap',
-                pointerEvents: 'none',
-                userSelect: 'none',
-                zIndex: 20,
-              }}
-            >
-              {n.text}
-            </motion.div>
-          );
-        })}
-      </div>
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        className="bg-cyber-bg/10 sm:bg-cyber-bg/30 backdrop-blur-sm px-8 py-10 rounded-xl shadow-glow space-y-8 flex flex-col items-center border border-matrix-green/30 max-w-2xl relative z-30 mx-auto"
-      >
-        <h1 className="text-3xl md:text-4xl font-mono font-bold code-glow mb-4">About Me</h1>
-        <p className="text-lg md:text-xl font-mono text-matrix-green mb-6">
-          Hi! I’m Kanishk, an aspiring Data Analyst & Security Enthusiast passionate about uncovering insights and building secure, data-driven solutions. I love exploring new technologies, solving problems, and learning about cybersecurity and analytics.
-        </p>
-        {/* Animated Skills & Timeline */}
-        <div className="w-full flex flex-col md:flex-row gap-8 mt-8">
-          {/* Skills */}
-          <div className="flex-1 bg-cyber-bg/60 border border-matrix-green/10 rounded-lg p-4">
-            <h2 className="font-mono text-cyber-accent text-lg mb-3">Skills</h2>
-            <ul className="space-y-2 text-left">
-              <motion.li initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }} className="text-matrix-green font-mono">Python, JavaScript, C++</motion.li>
-              <motion.li initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }} className="text-matrix-green font-mono">Data Analysis (Pandas, Power BI, SQL)</motion.li>
-              <motion.li initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4 }} className="text-matrix-green font-mono">Security Tools (Wireshark, Nmap, Burp Suite)</motion.li>
-              <motion.li initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 }} className="text-matrix-green font-mono">Machine Learning (K-Means, Logistic Regression, ARIMA)</motion.li>
-              <motion.li initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.6 }} className="text-matrix-green font-mono">Cloud & ETL (Snowflake, SSIS, AWS)</motion.li>
-            </ul>
-          </div>
-          {/* Timeline */}
-          <div className="flex-1 bg-cyber-bg/60 border border-matrix-green/10 rounded-lg p-4">
-            <h2 className="font-mono text-cyber-accent text-lg mb-3">Timeline</h2>
-            <ul className="space-y-2 text-left">
-              <motion.li initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }} className="text-cyber-accent font-mono">2022: Started B.S. in Information Technology at USF</motion.li>
-              <motion.li initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }} className="text-cyber-accent font-mono">2023: Built LawyerUp chatbot, Canvas Clone, and analytics dashboards</motion.li>
-              <motion.li initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4 }} className="text-cyber-accent font-mono">2024: Focused on security, ML, and cloud projects</motion.li>
-              <motion.li initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 }} className="text-cyber-accent font-mono">2026: Expected Graduation</motion.li>
-            </ul>
-          </div>
+    <section id="experience" className="section" aria-labelledby="experience-title">
+      <div className="section-shell experience-layout">
+        <div className="section-heading experience-intro">
+          <p className="eyebrow">Experience</p>
+          <h2 id="experience-title">Building across software and operations.</h2>
+          <p>Practical experience developing data-backed services, integrating AI APIs, automating recurring work, and supporting technical operations.</p>
         </div>
-      </motion.div>
-    </main>
+        <ol className="timeline">
+          {experience.map((item) => (
+            <li key={`${item.organization}-${item.role}`}>
+              <div className="timeline-meta"><span>{item.dates}</span></div>
+              <div className="timeline-copy">
+                <h3>{item.role}</h3>
+                <p className="organization">{item.organization}</p>
+                <p>{item.description}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
   );
 }

@@ -1,60 +1,80 @@
-import { motion } from "framer-motion";
+import About from "./About";
+import Contact from "./Contact";
+import Education from "./Education";
+import Projects from "./Projects";
+import Skills from "./Skills";
+
+const principles = [
+  { index: "01", title: "Trace the data path", copy: "Make inputs, transformations, storage boundaries, and outputs inspectable from end to end." },
+  { index: "02", title: "Validate model output", copy: "Keep business rules deterministic and use AI where it adds leverage—not where certainty is required." },
+  { index: "03", title: "Design for failure", copy: "Expose job states, validation errors, and recovery paths instead of hiding them behind a happy path." },
+  { index: "04", title: "Ship reproducibly", copy: "Keep environments containerized and verification close to the source with automated quality gates." },
+];
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex items-center justify-center px-4 text-center relative overflow-hidden">
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        className="bg-cyber-bg/80 backdrop-blur-lg px-4 py-6 sm:px-8 sm:py-10 rounded-xl shadow-glow space-y-8 flex flex-col items-center border border-matrix-green/20 w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl min-w-0"
-      >
-        <h1 className="text-4xl md:text-5xl font-mono font-bold code-glow select-none">
-          Kanishk Singh Chauhan
-        </h1>
-        {/* Typing effect for role: fade-in on mobile, typing on desktop */}
-        {/* Mobile: fade-in */}
-        <motion.p
-          className="block sm:hidden text-sm text-matrix-green font-mono mt-2 mb-4 w-full text-center"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.7, duration: 1 }}
-        >
-          Software engineer building reliable data and workflow systems
-        </motion.p>
-        {/* Desktop: typing effect */}
-        <p className="hidden sm:block text-base md:text-lg text-matrix-green font-mono mt-2 mb-4 text-center">
-          <span className="typing-effect" style={{ display: 'inline-block', whiteSpace: 'nowrap', overflow: 'hidden' }}>
-            Software engineer building reliable data and workflow systems
-          </span>
-        </p>
-        <a
-          href="/resume.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-6 px-4 py-3 sm:px-8 rounded-full bg-matrix-green text-cyber-bg font-mono font-bold shadow-glow border border-matrix-green/60 hover:bg-cyber-accent hover:text-cyber-bg transition-all animate-glow text-base sm:text-lg w-full sm:w-auto"
-        >
-          View resume
-          <span className="sr-only"> (PDF, opens in a new tab)</span>
-        </a>
-      </motion.div>
-      {/* Typing effect CSS */}
-      <style>{`
-        .typing-effect {
-          border-right: .15em solid #39FF14;
-          white-space: nowrap;
-          overflow: hidden;
-          animation: typing 2.5s steps(30, end), blink-caret .75s step-end infinite;
-        }
-        @keyframes typing {
-          from { width: 0 }
-          to { width: 100% }
-        }
-        @keyframes blink-caret {
-          from, to { border-color: transparent }
-          50% { border-color: #39FF14; }
-        }
-      `}</style>
+    <main id="main-content" tabIndex={-1}>
+      <section className="hero section-shell" aria-labelledby="hero-title">
+        <div className="hero-copy">
+          <p className="eyebrow">Software · Data · AI Engineering</p>
+          <h1 id="hero-title">Kanishk Singh Chauhan</h1>
+          <p className="hero-statement">I build reliable systems that turn messy inputs into explainable, testable workflows.</p>
+          <p className="hero-summary">
+            My work spans streaming data, asynchronous document processing, and evidence-grounded AI—implemented
+            with explicit validation, observable failure states, and reproducible local environments.
+          </p>
+          <div className="hero-actions" role="group" aria-label="Primary actions">
+            <a className="button button-primary" href="#work">View flagship work</a>
+            <a className="button button-secondary" href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+              Open résumé<span className="sr-only"> PDF, opens in a new tab</span>
+            </a>
+          </div>
+        </div>
+        <aside className="hero-brief" aria-label="Engineering profile">
+          <p className="brief-label">Current focus</p>
+          <p className="brief-title">Systems with evidence built in.</p>
+          <dl className="brief-list">
+            <div><dt>Build</dt><dd>Backend services, data platforms, AI-assisted products</dd></div>
+            <div><dt>Prioritize</dt><dd>Clear contracts, deterministic checks, durable state</dd></div>
+            <div><dt>Work with</dt><dd>Python, FastAPI, PostgreSQL, React, streaming systems</dd></div>
+          </dl>
+        </aside>
+      </section>
+
+      <Projects />
+
+      <section id="approach" className="section section-muted" aria-labelledby="approach-title">
+        <div className="section-shell">
+          <div className="section-heading split-heading">
+            <div><p className="eyebrow">Engineering approach</p><h2 id="approach-title">Evidence over spectacle.</h2></div>
+            <p>The work is organized around explicit system behavior: what enters, what changes, what can fail, and how the result is verified.</p>
+          </div>
+          <ol className="principles-grid">
+            {principles.map((principle) => (
+              <li key={principle.index}>
+                <span className="principle-index">{principle.index}</span>
+                <h3>{principle.title}</h3>
+                <p>{principle.copy}</p>
+              </li>
+            ))}
+          </ol>
+          <p className="scope-note">These are source-available portfolio systems designed for local reproduction; none is presented as a production deployment.</p>
+        </div>
+      </section>
+
+      <About />
+
+      <section id="background" className="section section-muted" aria-labelledby="background-title">
+        <div className="section-shell">
+          <div className="section-heading split-heading">
+            <div><p className="eyebrow">Background</p><h2 id="background-title">Education and technical range.</h2></div>
+            <p>A compact view of the academic foundation and tools reflected across the work above.</p>
+          </div>
+          <div className="background-grid"><Education /><Skills /></div>
+        </div>
+      </section>
+
+      <Contact />
     </main>
   );
 }

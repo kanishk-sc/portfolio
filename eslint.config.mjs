@@ -31,7 +31,7 @@ export default [
     },
   },
   {
-    files: ["vite.config.js", "tailwind.config.js"],
+    files: ["vite.config.js"],
     languageOptions: {
       ecmaVersion: "latest",
       globals: globals.node,
