@@ -50,8 +50,7 @@ it. The responsive layout has also been checked at desktop and 390-pixel mobile 
 
 ## Limitations
 
-- No public deployment is configured or claimed by this repository.
+- No production URL is documented in the repository, and this maintenance work does not claim that a hosted environment is current or supported.
 - Hosts must provide a single-page-application fallback for direct navigation to nested routes.
 - There is no automated component or end-to-end test suite; current automation covers linting and production builds.
 - Resume, education, skill and certification content is maintained by the repository owner and is not independently validated by the application.
-
