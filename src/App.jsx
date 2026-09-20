@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import { MotionConfig } from "framer-motion";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -9,13 +10,16 @@ import Education from "./pages/Education";
 import Skills from "./pages/Skills";
 import Certifications from "./pages/Certifications";
 
-// MatrixRainBackground component (copied from Home)
 function MatrixRainBackground() {
   const canvasRef = React.useRef(null);
   const isPaused = React.useRef(false);
 
   React.useEffect(() => {
     const canvas = canvasRef.current;
+    if (!canvas || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return undefined;
+    }
+
     const ctx = canvas.getContext("2d");
     let animationFrameId;
     let width = window.innerWidth;
@@ -81,6 +85,7 @@ function MatrixRainBackground() {
   return (
     <canvas
       ref={canvasRef}
+      aria-hidden="true"
       className="matrix-bg"
       style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: 0, pointerEvents: 'none', opacity: 0.25 }}
     />
@@ -93,18 +98,23 @@ export default function App() {
   }, []);
 
   return (
-    <div className="dark bg-cyber-bg min-h-screen relative">
-      <MatrixRainBackground />
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/education" element={<Education />} />
-        <Route path="/skills" element={<Skills />} />
-        <Route path="/certifications" element={<Certifications />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
-    </div>
+    <MotionConfig reducedMotion="user">
+      <div className="dark bg-cyber-bg min-h-screen relative">
+        <a href="#main-content" className="skip-link">Skip to main content</a>
+        <MatrixRainBackground />
+        <Navbar />
+        <div id="main-content" tabIndex={-1}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/education" element={<Education />} />
+            <Route path="/skills" element={<Skills />} />
+            <Route path="/certifications" element={<Certifications />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </div>
+      </div>
+    </MotionConfig>
   );
 }

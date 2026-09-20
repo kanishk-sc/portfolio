@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 
 const certifications = [
@@ -16,7 +15,7 @@ export default function Certifications() {
         transition={{ duration: 1 }}
         className="w-full max-w-2xl mx-auto"
       >
-        <h2 className="text-3xl md:text-4xl font-mono font-bold code-glow mb-8">Certifications</h2>
+        <h1 className="text-3xl md:text-4xl font-mono font-bold code-glow mb-8">Certifications</h1>
         <div className="flex flex-wrap gap-6 justify-center">
           {certifications.map((cert, idx) => (
             <motion.div
@@ -34,4 +33,4 @@ export default function Certifications() {
       </motion.div>
     </main>
   );
-} 
+}
