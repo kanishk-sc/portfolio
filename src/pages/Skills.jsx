@@ -27,11 +27,11 @@ export default function Skills() {
         transition={{ duration: 1 }}
         className="w-full max-w-3xl mx-auto"
       >
-        <h2 className="text-3xl md:text-4xl font-mono font-bold code-glow mb-8">Skills</h2>
+        <h1 className="text-3xl md:text-4xl font-mono font-bold code-glow mb-8">Skills</h1>
         <div className="space-y-8">
           {skills.map((cat) => (
             <div key={cat.category} className="bg-cyber-bg/80 border border-matrix-green/20 rounded-xl shadow-glow p-6">
-              <h3 className="text-xl font-mono font-bold text-cyber-accent mb-4">{cat.category}</h3>
+              <h2 className="text-xl font-mono font-bold text-cyber-accent mb-4">{cat.category}</h2>
               <div className="space-y-4">
                 {cat.items.map((skill, i) => (
                   <div key={skill.name} className="text-left">
@@ -57,4 +57,4 @@ export default function Skills() {
       </motion.div>
     </main>
   );
-} 
+}

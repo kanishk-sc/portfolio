@@ -71,7 +71,7 @@ export default function About() {
         transition={{ duration: 1 }}
         className="bg-cyber-bg/10 sm:bg-cyber-bg/30 backdrop-blur-sm px-8 py-10 rounded-xl shadow-glow space-y-8 flex flex-col items-center border border-matrix-green/30 max-w-2xl relative z-30 mx-auto"
       >
-        <h2 className="text-3xl md:text-4xl font-mono font-bold code-glow mb-4">About Me</h2>
+        <h1 className="text-3xl md:text-4xl font-mono font-bold code-glow mb-4">About Me</h1>
         <p className="text-lg md:text-xl font-mono text-matrix-green mb-6">
           Hi! I’m Kanishk, an aspiring Data Analyst & Security Enthusiast passionate about uncovering insights and building secure, data-driven solutions. I love exploring new technologies, solving problems, and learning about cybersecurity and analytics.
         </p>
@@ -79,7 +79,7 @@ export default function About() {
         <div className="w-full flex flex-col md:flex-row gap-8 mt-8">
           {/* Skills */}
           <div className="flex-1 bg-cyber-bg/60 border border-matrix-green/10 rounded-lg p-4">
-            <h4 className="font-mono text-cyber-accent text-lg mb-3">Skills</h4>
+            <h2 className="font-mono text-cyber-accent text-lg mb-3">Skills</h2>
             <ul className="space-y-2 text-left">
               <motion.li initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }} className="text-matrix-green font-mono">Python, JavaScript, C++</motion.li>
               <motion.li initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }} className="text-matrix-green font-mono">Data Analysis (Pandas, Power BI, SQL)</motion.li>
@@ -90,7 +90,7 @@ export default function About() {
           </div>
           {/* Timeline */}
           <div className="flex-1 bg-cyber-bg/60 border border-matrix-green/10 rounded-lg p-4">
-            <h4 className="font-mono text-cyber-accent text-lg mb-3">Timeline</h4>
+            <h2 className="font-mono text-cyber-accent text-lg mb-3">Timeline</h2>
             <ul className="space-y-2 text-left">
               <motion.li initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }} className="text-cyber-accent font-mono">2022: Started B.S. in Information Technology at USF</motion.li>
               <motion.li initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }} className="text-cyber-accent font-mono">2023: Built LawyerUp chatbot, Canvas Clone, and analytics dashboards</motion.li>
