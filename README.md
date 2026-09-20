@@ -7,10 +7,10 @@ behind each product.
 
 ## Implemented experience
 
-- Route-based pages for the profile, projects, education, skills, certifications and contact details
+- Route-based pages for the profile, projects, education, skills and contact details
 - Responsive desktop and mobile navigation with visible keyboard focus and a skip link
 - Direct, working links to the resume and the three featured GitHub repositories
-- A contact page that points to public LinkedIn and GitHub profiles without collecting visitor data
+- A contact page with direct email, LinkedIn and GitHub links without collecting visitor data
 - Reduced-motion support for the animated interface and matrix background
 - A reproducible locked installation plus CI-enforced lint and production builds
 
@@ -53,4 +53,4 @@ it. The responsive layout has also been checked at desktop and 390-pixel mobile 
 - No production URL is documented in the repository, and this maintenance work does not claim that a hosted environment is current or supported.
 - The checked-in Netlify redirect provides the single-page-application fallback; other static hosts need an equivalent rewrite for nested routes.
 - There is no automated component or end-to-end test suite; current automation covers linting and production builds.
-- Resume, education, skill and certification content is maintained by the repository owner and is not independently validated by the application.
+- Resume, education, experience and skill content is maintained by the repository owner and is not independently validated by the application.

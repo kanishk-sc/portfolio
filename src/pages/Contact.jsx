@@ -2,14 +2,22 @@ import { motion } from "framer-motion";
 
 const contactLinks = [
   {
+    label: "Email",
+    href: "mailto:kanishksingh@usf.edu",
+    description: "Send a direct professional inquiry.",
+    external: false,
+  },
+  {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/in/kanishksinghchauhan/",
+    href: "https://linkedin.com/in/kanishksinghchauhan",
     description: "Connect for professional conversations and opportunities.",
+    external: true,
   },
   {
     label: "GitHub",
     href: "https://github.com/kanishk-sc",
     description: "Review the source, tests, and engineering decisions behind my work.",
+    external: true,
   },
 ];
 
@@ -24,20 +32,20 @@ export default function Contact() {
       >
         <h1 className="text-3xl md:text-4xl font-mono font-bold code-glow mb-4">Contact</h1>
         <p className="text-cyber-accent font-mono mb-8">
-          The site does not collect or relay messages. Use one of these verified public profiles instead.
+          The site does not collect form submissions. Use email or one of these verified public profiles.
         </p>
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid gap-4 sm:grid-cols-3">
           {contactLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
+              target={link.external ? "_blank" : undefined}
+              rel={link.external ? "noopener noreferrer" : undefined}
               className="rounded-lg border border-matrix-green/30 bg-cyber-bg/60 p-5 text-left transition hover:border-cyber-accent hover:bg-cyber-accent/10"
             >
               <span className="block text-xl font-bold text-matrix-green">{link.label}</span>
               <span className="mt-2 block text-sm text-cyber-accent">{link.description}</span>
-              <span className="sr-only"> Opens in a new tab.</span>
+              {link.external ? <span className="sr-only"> Opens in a new tab.</span> : null}
             </a>
           ))}
         </div>

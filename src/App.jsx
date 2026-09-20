@@ -8,7 +8,6 @@ import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 import Education from "./pages/Education";
 import Skills from "./pages/Skills";
-import Certifications from "./pages/Certifications";
 
 function MatrixRainBackground() {
   const canvasRef = React.useRef(null);
@@ -110,7 +109,6 @@ export default function App() {
             <Route path="/projects" element={<Projects />} />
             <Route path="/education" element={<Education />} />
             <Route path="/skills" element={<Skills />} />
-            <Route path="/certifications" element={<Certifications />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </div>

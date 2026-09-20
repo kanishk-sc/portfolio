@@ -3,19 +3,19 @@ import { motion } from "framer-motion";
 const projects = [
   {
     title: "PulseForge",
-    description: "A reproducible real-time operations platform that carries synthetic commerce and logistics events through streaming, modeling, APIs, and an operations dashboard.",
-    tech: ["Kafka", "Spark", "FastAPI", "dbt", "React"],
+    description: "Turns synthetic commerce and logistics events into tested warehouse models and a React operations dashboard through a reproducible streaming pipeline.",
+    tech: ["Kafka", "Spark", "PostgreSQL", "dbt", "Airflow", "FastAPI", "React"],
     source: "https://github.com/kanishk-sc/pulseforge",
   },
   {
     title: "FreightIQ",
-    description: "An asynchronous freight-invoice review workflow with typed extraction, deterministic arithmetic checks, durable job states, and object storage.",
-    tech: ["FastAPI", "PostgreSQL", "Celery", "React", "Docker"],
+    description: "Turns freight-invoice PDFs into validated, reviewable records with queued extraction, deterministic arithmetic checks, durable job states, and a React review interface.",
+    tech: ["Python", "FastAPI", "PostgreSQL", "Celery", "MinIO", "TypeScript", "React", "Docker"],
     source: "https://github.com/kanishk-sc/freightiq",
   },
   {
     title: "ApplyPilot",
-    description: "An explainable resume-to-role matching workflow that separates deterministic scoring from optional, evidence-grounded generation.",
+    description: "Compares a resume with a role using explainable coverage signals and pgvector similarity, then keeps optional generation grounded in resume evidence.",
     tech: ["FastAPI", "pgvector", "Streamlit", "PostgreSQL", "Docker"],
     source: "https://github.com/kanishk-sc/applypilot",
   },

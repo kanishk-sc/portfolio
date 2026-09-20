@@ -1,21 +1,10 @@
 import { motion } from "framer-motion";
 
 const skills = [
-  { category: "Data Analysis", items: [
-    { name: "Excel", level: 90 },
-    { name: "Pandas", level: 80 },
-    { name: "SQL", level: 75 },
-  ]},
-  { category: "Programming", items: [
-    { name: "Python", level: 85 },
-    { name: "JavaScript", level: 70 },
-    { name: "C++", level: 60 },
-  ]},
-  { category: "Security Tools", items: [
-    { name: "Wireshark", level: 65 },
-    { name: "Nmap", level: 60 },
-    { name: "Burp Suite", level: 50 },
-  ]},
+  { category: "Languages", items: ["Python", "SQL", "Java", "TypeScript", "JavaScript", "C#"] },
+  { category: "Backend & Full Stack", items: ["FastAPI", "React", "REST APIs", "SQLAlchemy", "PostgreSQL", "MySQL", "MongoDB", "Authentication", "API Integration"] },
+  { category: "Data & AI", items: ["Apache Spark", "Airflow", "dbt", "Pandas", "NumPy", "scikit-learn", "ETL/ELT", "Data Modeling", "OpenAI API", "Claude API", "LangChain", "NLP"] },
+  { category: "Cloud & DevOps", items: ["AWS (EC2, S3)", "Azure", "Docker", "Git", "GitHub", "GitHub Actions", "CI/CD", "Linux", "Redis", "Kafka", "RabbitMQ", "Celery"] },
 ];
 
 export default function Skills() {
@@ -32,25 +21,19 @@ export default function Skills() {
           {skills.map((cat) => (
             <div key={cat.category} className="bg-cyber-bg/80 border border-matrix-green/20 rounded-xl shadow-glow p-6">
               <h2 className="text-xl font-mono font-bold text-cyber-accent mb-4">{cat.category}</h2>
-              <div className="space-y-4">
+              <ul className="flex flex-wrap justify-center gap-3" aria-label={`${cat.category} skills`}>
                 {cat.items.map((skill, i) => (
-                  <div key={skill.name} className="text-left">
-                    <div className="flex justify-between mb-1">
-                      <span className="font-mono text-matrix-green">{skill.name}</span>
-                      <span className="font-mono text-cyber-accent">{skill.level}%</span>
-                    </div>
-                    <motion.div
-                      className="h-3 rounded bg-cyber-bg border border-matrix-green/30 overflow-hidden"
-                      initial={{ width: 0 }}
-                      animate={{ width: skill.level + '%' }}
-                      transition={{ duration: 1 + i * 0.2 }}
-                      style={{ background: 'linear-gradient(90deg, #39FF14 60%, #00ffe7 100%)' }}
-                    >
-                      <div style={{ width: skill.level + '%', height: '100%' }} />
-                    </motion.div>
-                  </div>
+                  <motion.li
+                    key={skill}
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.05 * i }}
+                    className="rounded bg-cyber-accent/20 px-3 py-2 font-mono text-sm text-cyber-accent"
+                  >
+                    {skill}
+                  </motion.li>
                 ))}
-              </div>
+              </ul>
             </div>
           ))}
         </div>

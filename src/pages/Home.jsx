@@ -20,12 +20,12 @@ export default function Home() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.7, duration: 1 }}
         >
-          Software engineer building reliable data and workflow systems
+          Software engineer building backend, data, and AI systems
         </motion.p>
         {/* Desktop: typing effect */}
         <p className="hidden sm:block text-base md:text-lg text-matrix-green font-mono mt-2 mb-4 text-center">
           <span className="typing-effect" style={{ display: 'inline-block', whiteSpace: 'nowrap', overflow: 'hidden' }}>
-            Software engineer building reliable data and workflow systems
+            Software engineer building backend, data, and AI systems
           </span>
         </p>
         <a
