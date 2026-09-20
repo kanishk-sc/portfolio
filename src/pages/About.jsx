@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 
 // List of 'Kanishk Singh Chauhan' in various languages/scripts
@@ -24,7 +23,7 @@ export default function About() {
       <div className="absolute inset-0 z-20 pointer-events-none select-none">
         {names.map((n, i) => {
           // Center the first two rows, spread the rest
-          let style = {};
+          let style;
           if (i < 2) {
             style = {
               top: `${8 + i * 7}%`,

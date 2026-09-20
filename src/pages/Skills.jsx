@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 
 const skills = [
@@ -30,7 +29,7 @@ export default function Skills() {
       >
         <h2 className="text-3xl md:text-4xl font-mono font-bold code-glow mb-8">Skills</h2>
         <div className="space-y-8">
-          {skills.map((cat, idx) => (
+          {skills.map((cat) => (
             <div key={cat.category} className="bg-cyber-bg/80 border border-matrix-green/20 rounded-xl shadow-glow p-6">
               <h3 className="text-xl font-mono font-bold text-cyber-accent mb-4">{cat.category}</h3>
               <div className="space-y-4">

@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 
 export default function Education() {
@@ -20,7 +19,6 @@ export default function Education() {
           <h2 className="text-3xl font-mono font-bold code-glow text-matrix-green text-center mb-4">Education</h2>
           <h3 className="text-xl font-mono font-bold text-cyber-accent">University of South Florida</h3>
           <p className="text-matrix-green mt-2 font-mono">B.S. in Information Technology</p>
-          <p className="text-cyber-accent">Expected Graduation: May 2026</p>
           <p className="text-cyber-accent mt-4 font-mono">
             Passionate about data analytics, cloud technologies, and scalable systems.
           </p>
