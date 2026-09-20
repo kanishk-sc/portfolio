@@ -1,67 +1,69 @@
-import { motion } from "framer-motion";
-
 const projects = [
   {
     title: "PulseForge",
-    description: "Turns synthetic commerce and logistics events into tested warehouse models and a React operations dashboard through a reproducible streaming pipeline.",
+    category: "Streaming analytics platform",
+    outcome: "Turns synthetic commerce and logistics events into tested warehouse models and an operations dashboard.",
+    implemented: "Versioned event production, Kafka and Spark processing, idempotent PostgreSQL sinks, dbt marts, Airflow orchestration, typed FastAPI endpoints, and the React dashboard.",
     tech: ["Kafka", "Spark", "PostgreSQL", "dbt", "Airflow", "FastAPI", "React"],
+    status: "Reproducible with Docker Compose using synthetic data. No hosted deployment or benchmark claim.",
     source: "https://github.com/kanishk-sc/pulseforge",
   },
   {
     title: "FreightIQ",
-    description: "Turns freight-invoice PDFs into validated, reviewable records with queued extraction, deterministic arithmetic checks, durable job states, and a React review interface.",
-    tech: ["Python", "FastAPI", "PostgreSQL", "Celery", "MinIO", "TypeScript", "React", "Docker"],
+    category: "Document intelligence workflow",
+    outcome: "Turns freight-invoice PDFs into validated, reviewable records with durable job states and an operator-facing review flow.",
+    implemented: "FastAPI upload API, Celery job lifecycle, typed Claude extraction boundary, deterministic invoice audit, PostgreSQL and MinIO persistence, and a React reviewer.",
+    tech: ["FastAPI", "PostgreSQL", "Celery", "MinIO", "TypeScript", "React", "Docker"],
+    status: "Runs locally with Docker Compose; extraction requires a user-supplied Claude API key. No hosted demo.",
     source: "https://github.com/kanishk-sc/freightiq",
   },
   {
     title: "ApplyPilot",
-    description: "Compares a resume with a role using explainable coverage signals and pgvector similarity, then keeps optional generation grounded in resume evidence.",
-    tech: ["FastAPI", "pgvector", "Streamlit", "PostgreSQL", "Docker"],
+    category: "Evidence-grounded AI assistant",
+    outcome: "Compares a résumé with a role using explainable coverage signals and vector similarity, then grounds optional generation in résumé evidence.",
+    implemented: "FastAPI parsing and matching services, pgvector similarity, explicit hybrid scoring, grounded drafts, and a Streamlit client.",
+    tech: ["FastAPI", "pgvector", "PostgreSQL", "Streamlit", "Docker"],
+    status: "Runs locally with Docker Compose. Tests mock OpenAI calls; no hosted demo or ATS-accuracy claim.",
     source: "https://github.com/kanishk-sc/applypilot",
   },
 ];
 
 export default function Projects() {
   return (
-    <main className="min-h-screen flex items-center justify-center px-4 py-10 text-center relative overflow-hidden mt-24">
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="w-full max-w-5xl mx-auto"
-      >
-        <h1 className="text-3xl md:text-4xl font-mono font-bold code-glow mb-8">Projects</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <section id="work" className="section" aria-labelledby="work-title">
+      <div className="section-shell">
+        <div className="section-heading split-heading">
+          <div><p className="eyebrow">Selected systems</p><h2 id="work-title">Three problems, built end to end.</h2></div>
+          <p>Each project emphasizes a different systems problem while keeping architecture, validation, and operating constraints visible in the source.</p>
+        </div>
+        <div className="projects-grid">
           {projects.map((project, index) => (
-            <motion.article
-              key={project.title}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 + index * 0.1 }}
-              className="bg-cyber-bg/80 border border-matrix-green/20 rounded-xl shadow-glow p-4 sm:p-6 flex flex-col items-start text-left hover:shadow-2xl hover:border-cyber-accent transition-all w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl mx-auto"
-            >
-              <h2 className="text-xl sm:text-2xl font-mono font-bold code-glow mb-2">{project.title}</h2>
-              <p className="text-matrix-green font-mono mb-3 text-sm sm:text-base">{project.description}</p>
-              <div className="flex flex-wrap gap-2 mb-5" aria-label={`${project.title} technology`}>
-                {project.tech.map((technology) => (
-                  <span key={technology} className="px-2 py-1 bg-cyber-accent/20 text-cyber-accent font-mono rounded text-xs">
-                    {technology}
-                  </span>
-                ))}
+            <article className="project-card" key={project.title}>
+              <header className="project-header">
+                <span className="project-number">0{index + 1}</span>
+                <p>{project.category}</p>
+                <h3>{project.title}</h3>
+              </header>
+              <div className="project-body">
+                <div><h4>Outcome</h4><p className="project-outcome">{project.outcome}</p></div>
+                <div><h4>Implemented</h4><p>{project.implemented}</p></div>
+                <div>
+                  <h4>Core stack</h4>
+                  <ul className="tag-list" aria-label={`${project.title} core stack`}>
+                    {project.tech.map((technology) => <li key={technology}>{technology}</li>)}
+                  </ul>
+                </div>
               </div>
-              <a
-                href={project.source}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-auto font-mono font-bold text-cyber-accent underline decoration-transparent underline-offset-4 hover:decoration-current"
-              >
-                View source
-                <span className="sr-only"> for {project.title} (opens in a new tab)</span>
-              </a>
-            </motion.article>
+              <footer className="project-footer">
+                <p><span className="status-dot" aria-hidden="true" />{project.status}</p>
+                <a href={project.source} target="_blank" rel="noopener noreferrer">
+                  View source<span className="sr-only"> for {project.title}, opens in a new tab</span>
+                </a>
+              </footer>
+            </article>
           ))}
         </div>
-      </motion.div>
-    </main>
+      </div>
+    </section>
   );
 }

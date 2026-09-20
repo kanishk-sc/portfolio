@@ -1,24 +1,25 @@
 # Kanishk's Portfolio
 
-A responsive React portfolio that presents selected engineering work through a small,
-inspectable static application. The current project view links directly to PulseForge,
-FreightIQ and ApplyPilot so visitors can evaluate the source, tests and technical decisions
-behind each product.
+A focused engineering portfolio for evaluating Kanishk Singh Chauhan's backend, data, and
+AI work. The site presents PulseForge, FreightIQ, and ApplyPilot with their outcomes,
+architecture, implementation scope, source repositories, and current limitations.
 
 ## Implemented experience
 
-- Route-based pages for the profile, projects, education, skills and contact details
-- Responsive desktop and mobile navigation with visible keyboard focus and a skip link
-- Direct, working links to the resume and the three featured GitHub repositories
-- A contact page with direct email, LinkedIn and GitHub links without collecting visitor data
-- Reduced-motion support for the animated interface and matrix background
+- A single recruiter-focused narrative: positioning, flagship work, engineering approach,
+  experience, education, technical range, and contact options
+- Detailed project cards with direct links to the corresponding public source repositories
+- A stable `/resume.pdf` download and verified email, LinkedIn, and GitHub links
+- Legacy route redirects for `/projects`, `/about`, `/education`, `/skills`, and `/contact`
+- Responsive layouts, semantic landmarks, visible keyboard focus, and reduced-motion support
 - A reproducible locked installation plus CI-enforced lint and production builds
 
 ## Stack
 
-React 18, React Router, Framer Motion, Tailwind CSS, Vite and ESLint.
+React 18, React Router, Vite, ESLint, and maintainable plain CSS.
 
-The application is client-only. It has no server, database, analytics integration or message relay.
+The application is client-only. It has no server, database, analytics integration, contact
+form, or message relay.
 
 ## Local setup
 
@@ -37,20 +38,25 @@ truth for clean installations.
 ```sh
 npm run lint
 npm run build
+npm audit
 ```
 
-The GitHub Actions workflow runs the same clean installation, lint and production-build path
+The GitHub Actions workflow runs the same clean installation, lint, and production-build path
 for pull requests and pushes to `main`.
 
 ## Accessibility
 
-Navigation is keyboard operable, icon-only controls have accessible names, headings follow the
-page structure, focus remains visible, and motion is reduced when the operating system requests
-it. The responsive layout has also been checked at desktop and 390-pixel mobile widths.
+The page uses semantic sections and heading order, provides a skip link, keeps controls keyboard
+operable, exposes clear focus states, and removes nonessential motion when the operating system
+requests reduced motion. Layout checks cover desktop, tablet, and mobile widths.
 
 ## Limitations
 
-- No production URL is documented in the repository, and this maintenance work does not claim that a hosted environment is current or supported.
-- The checked-in Netlify redirect provides the single-page-application fallback; other static hosts need an equivalent rewrite for nested routes.
-- There is no automated component or end-to-end test suite; current automation covers linting and production builds.
-- Resume, education, experience and skill content is maintained by the repository owner and is not independently validated by the application.
+- The featured systems are source-available portfolio projects designed for local reproduction;
+  the site does not claim hosted deployments, production usage, or benchmark results.
+- The checked-in Netlify redirect provides the single-page-application fallback; other static
+  hosts need an equivalent rewrite for nested routes.
+- There is no automated component or end-to-end test suite; current automation covers linting
+  and production builds.
+- Résumé, education, experience, and skill content is maintained by the repository owner and is
+  not independently validated by the application.
