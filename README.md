@@ -37,12 +37,13 @@ truth for clean installations.
 
 ```sh
 npm run lint
+npm test
 npm run build
-npm audit
+npm audit --audit-level=low
 ```
 
-The GitHub Actions workflow runs the same clean installation, lint, and production-build path
-for pull requests and pushes to `main`.
+The GitHub Actions workflow runs the same clean installation, lint, component-test, and
+production-build path for pull requests and pushes to `main`.
 
 ## Accessibility
 
@@ -56,7 +57,7 @@ requests reduced motion. Layout checks cover desktop, tablet, and mobile widths.
   the site does not claim hosted deployments, production usage, or benchmark results.
 - The checked-in Netlify redirect provides the single-page-application fallback; other static
   hosts need an equivalent rewrite for nested routes.
-- There is no automated component or end-to-end test suite; current automation covers linting
-  and production builds.
+- Focused component tests cover the architecture walkthrough; the portfolio does not yet have
+  a broader end-to-end browser suite.
 - Résumé, education, experience, and skill content is maintained by the repository owner and is
   not independently validated by the application.
