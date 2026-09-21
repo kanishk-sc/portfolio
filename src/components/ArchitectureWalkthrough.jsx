@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import EvidencePlate from "./EvidencePlate";
 
 function ProjectTabs({ projects, selectedIndex, onSelect }) {
   const tabRefs = useRef([]);
@@ -14,7 +15,7 @@ function ProjectTabs({ projects, selectedIndex, onSelect }) {
     else return;
 
     event.preventDefault();
-    onSelect(nextIndex);
+    onSelect(nextIndex, "keyboard");
     tabRefs.current[nextIndex]?.focus();
   };
 
@@ -30,7 +31,7 @@ function ProjectTabs({ projects, selectedIndex, onSelect }) {
           aria-selected={selectedIndex === index}
           aria-controls="walkthrough-project-panel"
           tabIndex={selectedIndex === index ? 0 : -1}
-          onClick={() => onSelect(index)}
+          onClick={(event) => onSelect(index, event.detail > 0 ? "pointer" : "keyboard")}
           onKeyDown={(event) => selectFromKeyboard(event, index)}
         >
           {project.title}
@@ -48,6 +49,7 @@ export default function ArchitectureWalkthrough({
   onClose,
   onProjectChange,
   onStageChange,
+  motionIntent,
 }) {
   const project = projects[selectedProjectIndex];
   const stage = project.stages[selectedStageIndex];
@@ -93,7 +95,7 @@ export default function ArchitectureWalkthrough({
                   type="button"
                   aria-current={isCurrent ? "step" : undefined}
                   aria-controls="walkthrough-stage-detail"
-                  onClick={() => onStageChange(index)}
+                  onClick={(event) => onStageChange(index, event.detail > 0 ? "pointer" : "keyboard")}
                 >
                   <span className="stage-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
                   <span>{item.title}</span>
@@ -103,6 +105,12 @@ export default function ArchitectureWalkthrough({
             );
           })}
         </ol>
+
+        <EvidencePlate
+          projectSlug={project.slug}
+          selectedStageIndex={selectedStageIndex}
+          motionIntent={motionIntent}
+        />
 
         <div className="walkthrough-detail-grid">
           <div
@@ -128,14 +136,20 @@ export default function ArchitectureWalkthrough({
           <button
             type="button"
             disabled={isFirstStage}
-            onClick={() => onStageChange(selectedStageIndex - 1)}
+            onClick={(event) => onStageChange(
+              selectedStageIndex - 1,
+              event.detail > 0 ? "pointer" : "keyboard",
+            )}
           >
             Previous
           </button>
           <button
             type="button"
             disabled={isLastStage}
-            onClick={() => onStageChange(selectedStageIndex + 1)}
+            onClick={(event) => onStageChange(
+              selectedStageIndex + 1,
+              event.detail > 0 ? "pointer" : "keyboard",
+            )}
           >
             Next
           </button>

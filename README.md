@@ -9,6 +9,8 @@ architecture, implementation scope, source repositories, and current limitations
 - A single recruiter-focused narrative: positioning, flagship work, engineering approach,
   experience, education, technical range, and contact options
 - Detailed project cards with direct links to the corresponding public source repositories
+- Project-specific illustrated architecture plates that trace implemented systems without
+  presenting them as live telemetry or product simulations
 - A stable `/resume.pdf` download and verified email, LinkedIn, and GitHub links
 - Legacy route redirects for `/projects`, `/about`, `/education`, `/skills`, and `/contact`
 - Responsive layouts, semantic landmarks, visible keyboard focus, and reduced-motion support
@@ -49,7 +51,9 @@ production-build path for pull requests and pushes to `main`.
 
 The page uses semantic sections and heading order, provides a skip link, keeps controls keyboard
 operable, exposes clear focus states, and removes nonessential motion when the operating system
-requests reduced motion. Layout checks cover desktop, tablet, and mobile widths.
+requests reduced motion. The illustrated architecture plates have one accessible title and
+description each, remain non-interactive, and retain the complete textual stage explanation as
+their alternative. Layout checks cover desktop, tablet, and mobile widths.
 
 ## Limitations
 

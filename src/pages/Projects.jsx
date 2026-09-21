@@ -64,6 +64,7 @@ const projects = [
 export default function Projects() {
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(null);
   const [selectedStageIndex, setSelectedStageIndex] = useState(0);
+  const [motionIntent, setMotionIntent] = useState("instant");
   const originButtonRef = useRef(null);
   const walkthroughHeadingRef = useRef(null);
   const shouldFocusWalkthroughRef = useRef(false);
@@ -78,13 +79,20 @@ export default function Projects() {
   const openWalkthrough = (projectIndex, button) => {
     originButtonRef.current = button;
     shouldFocusWalkthroughRef.current = true;
+    setMotionIntent("instant");
     setSelectedStageIndex(0);
     setSelectedProjectIndex(projectIndex);
   };
 
-  const selectProject = (projectIndex) => {
+  const selectProject = (projectIndex, intent = "instant") => {
+    setMotionIntent(intent);
     setSelectedProjectIndex(projectIndex);
     setSelectedStageIndex(0);
+  };
+
+  const selectStage = (stageIndex, intent = "instant") => {
+    setMotionIntent(intent);
+    setSelectedStageIndex(stageIndex);
   };
 
   const closeWalkthrough = () => {
@@ -150,7 +158,8 @@ export default function Projects() {
             headingRef={walkthroughHeadingRef}
             onClose={closeWalkthrough}
             onProjectChange={selectProject}
-            onStageChange={setSelectedStageIndex}
+            onStageChange={selectStage}
+            motionIntent={motionIntent}
           />
         ) : null}
       </div>
