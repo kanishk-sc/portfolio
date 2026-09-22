@@ -709,7 +709,7 @@ h2 {
 }
 
 .walkthrough-detail-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr); gap: clamp(36px, 7vw, 90px); margin-top: 34px; padding-top: 28px; border-top: 1px solid var(--border); }
-.walkthrough-detail { min-height: 145px; }
+.walkthrough-detail { min-height: 146px; }
 .detail-count { margin-bottom: 7px; color: var(--accent-dark); font-family: var(--mono); font-size: 0.67rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
 .walkthrough-detail h4 { margin-bottom: 9px; font-family: Georgia, "Times New Roman", serif; font-size: 1.85rem; font-weight: 500; letter-spacing: -0.03em; }
 .walkthrough-detail > p:last-child,
