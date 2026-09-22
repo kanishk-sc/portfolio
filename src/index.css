@@ -792,6 +792,7 @@ h2 {
 }
 
 @media (max-width: 820px) {
+  .walkthrough-stages button { min-height: 120px; }
   .vignette-scene-shell { padding-right: 24px; padding-left: 24px; }
   .vignette-scene { gap: 18px; }
   .pulseforge-ingest,
