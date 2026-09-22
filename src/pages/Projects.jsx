@@ -87,6 +87,10 @@ export default function Projects() {
     setSelectedStageIndex(0);
   };
 
+  const selectStage = (stageIndex) => {
+    setSelectedStageIndex(stageIndex);
+  };
+
   const closeWalkthrough = () => {
     setSelectedProjectIndex(null);
     originButtonRef.current?.focus();
@@ -150,7 +154,7 @@ export default function Projects() {
             headingRef={walkthroughHeadingRef}
             onClose={closeWalkthrough}
             onProjectChange={selectProject}
-            onStageChange={setSelectedStageIndex}
+            onStageChange={selectStage}
           />
         ) : null}
       </div>

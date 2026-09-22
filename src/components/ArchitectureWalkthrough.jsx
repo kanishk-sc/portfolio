@@ -1,4 +1,24 @@
-import { useRef } from "react";
+import { useEffect, useReducer, useRef } from "react";
+import ProjectVignette from "./ProjectVignette";
+import usePrefersReducedMotion from "../hooks/usePrefersReducedMotion";
+import { VIGNETTE_FRAME_DURATION_MS } from "../data/vignetteData";
+
+const initialPlayback = { status: "idle", announcement: "", run: 0 };
+
+function playbackReducer(state, action) {
+  switch (action.type) {
+    case "play":
+      return { status: "playing", announcement: action.resume ? "Demo resumed." : "Demo started.", run: state.run + 1 };
+    case "pause":
+      return { status: "paused", announcement: "Demo paused.", run: state.run };
+    case "complete":
+      return { status: "complete", announcement: action.announcement ?? "Demo complete. Final result shown.", run: state.run };
+    case "reset":
+      return { status: "idle", announcement: action.announcement ?? "", run: state.run + 1 };
+    default:
+      return state;
+  }
+}
 
 function ProjectTabs({ projects, selectedIndex, onSelect }) {
   const tabRefs = useRef([]);
@@ -14,12 +34,12 @@ function ProjectTabs({ projects, selectedIndex, onSelect }) {
     else return;
 
     event.preventDefault();
-    onSelect(nextIndex);
+    onSelect(nextIndex, "keyboard");
     tabRefs.current[nextIndex]?.focus();
   };
 
   return (
-    <div className="walkthrough-tabs" role="tablist" aria-label="Choose a project architecture">
+    <div className="walkthrough-tabs" role="tablist" aria-label="Choose a project demonstration">
       {projects.map((project, index) => (
         <button
           key={project.slug}
@@ -30,7 +50,7 @@ function ProjectTabs({ projects, selectedIndex, onSelect }) {
           aria-selected={selectedIndex === index}
           aria-controls="walkthrough-project-panel"
           tabIndex={selectedIndex === index ? 0 : -1}
-          onClick={() => onSelect(index)}
+          onClick={(event) => onSelect(index, event.detail > 0 ? "pointer" : "keyboard")}
           onKeyDown={(event) => selectFromKeyboard(event, index)}
         >
           {project.title}
@@ -53,6 +73,96 @@ export default function ArchitectureWalkthrough({
   const stage = project.stages[selectedStageIndex];
   const isFirstStage = selectedStageIndex === 0;
   const isLastStage = selectedStageIndex === project.stages.length - 1;
+  const reducedMotion = usePrefersReducedMotion();
+  const [playback, dispatchPlayback] = useReducer(playbackReducer, initialPlayback);
+  const timerRef = useRef(null);
+  const deadlineRef = useRef(0);
+  const remainingTimeRef = useRef(VIGNETTE_FRAME_DURATION_MS);
+  const onStageChangeRef = useRef(onStageChange);
+
+  useEffect(() => {
+    onStageChangeRef.current = onStageChange;
+  }, [onStageChange]);
+
+  useEffect(() => {
+    if (playback.status !== "playing" || reducedMotion) return undefined;
+
+    if (isLastStage) {
+      dispatchPlayback({ type: "complete" });
+      return undefined;
+    }
+
+    const delay = remainingTimeRef.current;
+    deadlineRef.current = Date.now() + delay;
+    timerRef.current = globalThis.setTimeout(() => {
+      remainingTimeRef.current = VIGNETTE_FRAME_DURATION_MS;
+      onStageChangeRef.current(selectedStageIndex + 1, "playback");
+    }, delay);
+
+    return () => globalThis.clearTimeout(timerRef.current);
+  }, [isLastStage, playback.run, playback.status, reducedMotion, selectedStageIndex]);
+
+  useEffect(() => () => globalThis.clearTimeout(timerRef.current), []);
+
+  const cancelPlayback = (announcement = "") => {
+    globalThis.clearTimeout(timerRef.current);
+    remainingTimeRef.current = VIGNETTE_FRAME_DURATION_MS;
+    dispatchPlayback({ type: "reset", announcement });
+  };
+
+  const handlePlay = () => {
+    if (reducedMotion) {
+      onStageChange(project.stages.length - 1, "reduced");
+      dispatchPlayback({ type: "complete", announcement: "Automatic playback is disabled. Final result shown." });
+      return;
+    }
+
+    if (playback.status === "paused") {
+      dispatchPlayback({ type: "play", resume: true });
+      return;
+    }
+
+    if (!isFirstStage) onStageChange(0, "playback");
+    remainingTimeRef.current = VIGNETTE_FRAME_DURATION_MS;
+    dispatchPlayback({ type: "play" });
+  };
+
+  const handlePause = () => {
+    remainingTimeRef.current = Math.max(0, deadlineRef.current - Date.now());
+    globalThis.clearTimeout(timerRef.current);
+    dispatchPlayback({ type: "pause" });
+  };
+
+  const handleReplay = () => {
+    globalThis.clearTimeout(timerRef.current);
+    remainingTimeRef.current = VIGNETTE_FRAME_DURATION_MS;
+    onStageChange(0, "playback");
+    dispatchPlayback({ type: "play" });
+  };
+
+  const handleReducedMotionAction = () => {
+    if (isLastStage) {
+      onStageChange(0, "reduced");
+      dispatchPlayback({ type: "reset", announcement: "Automatic playback is disabled. First frame shown." });
+    } else {
+      handlePlay();
+    }
+  };
+
+  const handleProjectChange = (projectIndex, intent) => {
+    cancelPlayback();
+    onProjectChange(projectIndex, intent);
+  };
+
+  const handleStageChange = (stageIndex, intent = "instant") => {
+    cancelPlayback(playback.status === "playing" || playback.status === "paused" ? "Automatic playback stopped." : "");
+    onStageChange(stageIndex, intent);
+  };
+
+  const handleClose = () => {
+    cancelPlayback();
+    onClose();
+  };
 
   return (
     <section
@@ -62,12 +172,12 @@ export default function ArchitectureWalkthrough({
     >
       <header className="walkthrough-header">
         <div>
-          <p className="eyebrow">System trace</p>
+          <p className="eyebrow">Illustrative product demo</p>
           <h3 id="architecture-walkthrough-title" ref={headingRef} tabIndex={-1}>
-            Architecture walkthrough
+            Project walkthrough
           </h3>
         </div>
-        <button type="button" className="walkthrough-close" onClick={onClose}>
+        <button type="button" className="walkthrough-close" onClick={handleClose}>
           Close walkthrough
         </button>
       </header>
@@ -75,7 +185,7 @@ export default function ArchitectureWalkthrough({
       <ProjectTabs
         projects={projects}
         selectedIndex={selectedProjectIndex}
-        onSelect={onProjectChange}
+        onSelect={handleProjectChange}
       />
 
       <div
@@ -93,7 +203,7 @@ export default function ArchitectureWalkthrough({
                   type="button"
                   aria-current={isCurrent ? "step" : undefined}
                   aria-controls="walkthrough-stage-detail"
-                  onClick={() => onStageChange(index)}
+                  onClick={(event) => handleStageChange(index, event.detail > 0 ? "pointer" : "keyboard")}
                 >
                   <span className="stage-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
                   <span>{item.title}</span>
@@ -104,11 +214,44 @@ export default function ArchitectureWalkthrough({
           })}
         </ol>
 
+        <div className="vignette-toolbar">
+          <div className="vignette-playback-controls" aria-label={`${project.title} demo playback`}>
+            {reducedMotion ? (
+              <button type="button" onClick={handleReducedMotionAction}>
+                {isLastStage ? "Show first frame" : "Show final result"}
+              </button>
+            ) : null}
+            {!reducedMotion && playback.status === "idle" ? (
+              <button type="button" onClick={handlePlay}>Play demo</button>
+            ) : null}
+            {!reducedMotion && playback.status === "playing" ? (
+              <button type="button" onClick={handlePause}>Pause demo</button>
+            ) : null}
+            {!reducedMotion && playback.status === "paused" ? (
+              <button type="button" onClick={handlePlay}>Resume demo</button>
+            ) : null}
+            {!reducedMotion && playback.status !== "idle" ? (
+              <button type="button" className="button-secondary" onClick={handleReplay}>Replay demo</button>
+            ) : null}
+          </div>
+          <p className="playback-status" aria-hidden="true">
+            {reducedMotion ? "Automatic playback disabled" : playback.status === "idle" ? "Ready" : playback.status}
+          </p>
+          <p className="sr-only" role="status" aria-live="polite" aria-atomic="true">{playback.announcement}</p>
+        </div>
+
+        <ProjectVignette
+          project={project}
+          selectedStageIndex={selectedStageIndex}
+          playbackStatus={playback.status}
+          reducedMotion={reducedMotion}
+        />
+
         <div className="walkthrough-detail-grid">
           <div
             id="walkthrough-stage-detail"
             className="walkthrough-detail"
-            aria-live="polite"
+            aria-live={playback.status === "playing" ? "off" : "polite"}
             aria-atomic="true"
           >
             <p className="detail-count">Stage {selectedStageIndex + 1} of {project.stages.length}</p>
@@ -128,14 +271,20 @@ export default function ArchitectureWalkthrough({
           <button
             type="button"
             disabled={isFirstStage}
-            onClick={() => onStageChange(selectedStageIndex - 1)}
+            onClick={(event) => handleStageChange(
+              selectedStageIndex - 1,
+              event.detail > 0 ? "pointer" : "keyboard",
+            )}
           >
             Previous
           </button>
           <button
             type="button"
             disabled={isLastStage}
-            onClick={() => onStageChange(selectedStageIndex + 1)}
+            onClick={(event) => handleStageChange(
+              selectedStageIndex + 1,
+              event.detail > 0 ? "pointer" : "keyboard",
+            )}
           >
             Next
           </button>
