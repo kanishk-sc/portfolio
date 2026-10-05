@@ -72,7 +72,7 @@ export default function Projects() {
     if (selectedProjectIndex === null || !shouldFocusWalkthroughRef.current) return;
     shouldFocusWalkthroughRef.current = false;
     walkthroughHeadingRef.current?.focus({ preventScroll: true });
-    walkthroughHeadingRef.current?.scrollIntoView({ block: "nearest" });
+    walkthroughHeadingRef.current?.closest("section")?.scrollIntoView({ block: "start", behavior: "instant" });
   }, [selectedProjectIndex]);
 
   const openWalkthrough = (projectIndex, button) => {

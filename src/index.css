@@ -901,6 +901,56 @@ h2 {
   .site-footer { flex-direction: column; gap: 4px; }
 }
 
+/* Keep the work and its controls in view before asking visitors to read details. */
+.hero { min-height: auto; padding-top: clamp(64px, 8vh, 96px); padding-bottom: 72px; }
+.project-number { margin-bottom: 24px; }
+.project-actions button { min-height: 44px; padding: 10px 14px; border: 1px solid var(--accent-dark); background: var(--accent-dark); color: #fff; }
+.project-actions button:hover { background: var(--ink); color: #fff; }
+.project-card:hover { transform: none; box-shadow: none; }
+.walkthrough-panel { scroll-margin-top: calc(var(--header-height) + 16px); }
+.walkthrough-header { margin-bottom: 24px; }
+.walkthrough-tabs { margin-bottom: 20px; }
+.walkthrough-stages { gap: 8px; }
+.walkthrough-stages li::after { display: none; }
+.walkthrough-stages button { width: 100%; min-height: 76px; padding: 12px; }
+.walkthrough-stages button > span { font-size: 0.78rem; }
+.stage-current { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.walkthrough-stages button[aria-current="step"] { border-color: var(--accent); box-shadow: inset 0 -3px var(--accent); }
+.vignette-toolbar { flex-wrap: wrap; gap: 12px; }
+.vignette-toolbar .walkthrough-controls { margin: 0; margin-left: auto; }
+.vignette-playback-controls button,
+.walkthrough-controls button,
+.walkthrough-close { min-height: 44px; }
+.playback-status { flex-basis: 100%; margin: 0; text-align: left; }
+.vignette-playback-controls button:first-child { background: var(--accent-dark); border-color: var(--accent-dark); color: white; }
+.vignette-playback-controls button:first-child:hover { background: var(--ink); }
+.vignette-canvas { font-size: 1rem; }
+.mini-document > span, .mini-document small, .role-card small,
+.vector-card small, .audit-surface small, .hybrid-result small,
+.provider-note, .provider-note strong { font-size: 0.7rem; }
+
+@media (max-width: 700px) {
+  .hero { padding-top: 48px; padding-bottom: 56px; gap: 36px; }
+  .hero-brief { padding: 22px; }
+  .walkthrough-panel { padding: 22px 16px; }
+  .walkthrough-tabs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .walkthrough-tabs button { padding: 10px 5px; font-size: 0.67rem; text-align: center; }
+  .walkthrough-tabs button[aria-selected="true"] { border-left: 0; border-bottom: 3px solid var(--accent); }
+  .walkthrough-stages { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+  .walkthrough-stages button { min-height: 48px; grid-template-columns: 22px minmax(0, 1fr); gap: 5px; padding: 8px; text-align: left; }
+  .walkthrough-stages button > span { font-size: 0.7rem; }
+  .vignette-toolbar { flex-direction: row; align-items: center; }
+  .vignette-playback-controls { width: auto; flex: 1; flex-wrap: wrap; }
+  .vignette-toolbar .walkthrough-controls { width: 100%; }
+  .walkthrough-controls button { flex: 1; }
+  .vignette-scene-shell { padding: 20px 12px; }
+  .pulseforge-process { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .pulseforge-process > .direction-mark { height: 30px; justify-self: center; }
+  .pulseforge-process .rejection-slip { grid-column: auto; min-height: 76px; }
+  .walkthrough-detail-grid { margin-top: 22px; padding-top: 22px; }
+  .walkthrough-detail { min-height: 0; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {
