@@ -270,6 +270,7 @@ export default function ArchitectureWalkthrough({
           </div>
 
           <div className="walkthrough-meta">
+            <p className="walkthrough-status"><strong>Implemented.</strong> {project.implemented}</p>
             <p className="walkthrough-status"><strong>Project status.</strong> {project.walkthroughStatus}</p>
             <a href={project.source} target="_blank" rel="noopener noreferrer">
               View source<span className="sr-only"> for {project.title}, opens in a new tab</span>

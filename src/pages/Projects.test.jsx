@@ -13,6 +13,20 @@ const openProject = async (user, project) => {
 };
 
 describe("project product walkthrough", () => {
+  it("provides real interface captures with explicit verification boundaries", () => {
+    render(<Projects />);
+    for (const project of ["PulseForge", "FreightIQ", "ApplyPilot"]) {
+      const imageLink = screen.getByRole("link", { name: `Open full-size ${project} interface screenshot in a new tab` });
+      const path = `/projects/${project.toLowerCase()}.jpg`;
+      expect(imageLink).toHaveAttribute("href", path);
+      expect(imageLink.querySelector("img")).toHaveAttribute("src", path);
+      expect(readFileSync(resolve(`public${path}`)).length).toBeGreaterThan(0);
+    }
+    expect(screen.getByText(/retained synthetic data, with stale analytics explicitly shown/)).toBeVisible();
+    expect(screen.getByText(/no extraction or audit result shown/)).toBeVisible();
+    expect(screen.getByText(/no provider call or match result shown/)).toBeVisible();
+  });
+
   it("has no automated accessibility violations when closed or expanded for every project", async () => {
     const user = userEvent.setup();
     const { container } = render(<Projects />);

@@ -8,10 +8,13 @@ const projects = [
     category: "Streaming analytics platform",
     outcome: "Turns synthetic commerce and logistics events into tested warehouse models and an operations dashboard.",
     implemented: "Versioned event production, Kafka and Spark processing, idempotent PostgreSQL sinks, dbt marts, Airflow orchestration, typed FastAPI endpoints, and the React dashboard.",
+    implementationSummary: "Kafka → Spark → warehouse models → FastAPI and React.",
+    engineeringDecision: "Idempotent sinks and retained rejected records make the data path inspectable.",
+    screenshotCaption: "Local dashboard · retained synthetic data, with stale analytics explicitly shown.",
+    screenshotAlt: "PulseForge operations dashboard showing stale analytics, trust context and a synthetic incident",
     tech: ["Kafka", "Spark", "PostgreSQL", "dbt", "Airflow", "FastAPI", "React"],
     status: "Reproducible with Docker Compose using synthetic data. No hosted deployment or benchmark claim.",
     source: "https://github.com/kanishk-sc/pulseforge",
-    trace: ["Events", "Process", "Model", "Serve"],
     stages: [
       { title: "Ingest", description: "Kafka receives versioned synthetic commerce and logistics events." },
       { title: "Process", description: "Spark validates and transforms streaming records, preserving rejected evidence with explicit failure reasons." },
@@ -27,10 +30,13 @@ const projects = [
     category: "Document intelligence workflow",
     outcome: "Turns freight-invoice PDFs into validated, reviewable records with durable job states and an operator-facing review flow.",
     implemented: "FastAPI upload API, Celery job lifecycle, typed Claude extraction boundary, deterministic invoice audit, PostgreSQL and MinIO persistence, and a React reviewer.",
+    implementationSummary: "Upload API → durable Celery jobs → extraction and audit → React review.",
+    engineeringDecision: "Schema validation and deterministic arithmetic checks surround provider extraction.",
+    screenshotCaption: "Actual local upload interface · initial state; no extraction or audit result shown.",
+    screenshotAlt: "FreightIQ upload interface with a PDF drop zone and dashboard navigation",
     tech: ["FastAPI", "PostgreSQL", "Celery", "MinIO", "TypeScript", "React", "Docker"],
     status: "Runs locally with Docker Compose; extraction requires a user-supplied Claude API key. No hosted demo.",
     source: "https://github.com/kanishk-sc/freightiq",
-    trace: ["Upload", "Extract", "Audit", "Review"],
     stages: [
       { title: "Upload", description: "The FastAPI application accepts a freight-invoice PDF and creates a processing job." },
       { title: "Store & queue", description: "MinIO stores the document, Redis brokers work to Celery, and PostgreSQL keeps durable job state." },
@@ -46,10 +52,13 @@ const projects = [
     category: "Evidence-grounded AI assistant",
     outcome: "Compares a résumé with a role using explainable coverage signals and vector similarity, then grounds optional generation in résumé evidence.",
     implemented: "FastAPI parsing and matching services, pgvector similarity, explicit hybrid scoring, grounded drafts, and a Streamlit client.",
+    implementationSummary: "Parsing → whole-input vector comparison → explainable matching in Streamlit.",
+    engineeringDecision: "Matched evidence and missing skills remain separate from optional generated drafts.",
+    screenshotCaption: "Actual local Streamlit interface · initial state; no provider call or match result shown.",
+    screenshotAlt: "ApplyPilot Analyze interface with resume upload, role title and job description inputs",
     tech: ["FastAPI", "pgvector", "PostgreSQL", "Streamlit", "Docker"],
     status: "Runs locally with Docker Compose. Tests mock OpenAI calls; no hosted demo or ATS-accuracy claim.",
     source: "https://github.com/kanishk-sc/applypilot",
-    trace: ["Parse", "Represent", "Score", "Explain"],
     stages: [
       { title: "Parse", description: "The application parses résumé files into text and sections, and accepts structured job-description content." },
       { title: "Represent", description: "The OpenAI provider client creates fixed-dimension semantic representations for each résumé and job." },
@@ -111,15 +120,18 @@ export default function Projects() {
                 <p>{project.category}</p>
                 <h3>{project.title}</h3>
               </header>
+              <figure className="project-preview">
+                <a href={`/projects/${project.slug}.jpg`} target="_blank" rel="noopener noreferrer"
+                  aria-label={`Open full-size ${project.title} interface screenshot in a new tab`}>
+                  <img src={`/projects/${project.slug}.jpg`} alt={project.screenshotAlt}
+                    width="1440" height="1100" loading="lazy" decoding="async" />
+                </a>
+                <figcaption>{project.screenshotCaption} <span>Open full-size image.</span></figcaption>
+              </figure>
               <div className="project-body">
                 <div><h4>Outcome</h4><p className="project-outcome">{project.outcome}</p></div>
-                <div><h4>Implemented</h4><p>{project.implemented}</p></div>
-                <div className="project-trace">
-                  <h4>System trace</h4>
-                  <ol aria-label={`${project.title} system trace`}>
-                    {project.trace.map((stage) => <li key={stage}>{stage}</li>)}
-                  </ol>
-                </div>
+                <div><h4>Implemented</h4><p>{project.implementationSummary}</p></div>
+                <div><h4>Engineering decision</h4><p>{project.engineeringDecision}</p></div>
                 <div>
                   <h4>Core stack</h4>
                   <ul className="tag-list" aria-label={`${project.title} core stack`}>

@@ -12,12 +12,21 @@ Reviewed the public portfolio and its three illustrative project stories at desk
 - Raised small secondary demo labels and corrected the narrow Spark validation layout.
 - Scroll the full walkthrough header into view when opening, while focusing its heading and restoring the originating button on close.
 
-## Next visual priorities
+## Real interface evidence
 
-1. Add verified screenshots from the actual local applications alongside the illustrative stories. This would make product interface quality easier to judge; screenshots should be captured from reproducible sample data and clearly labeled.
-2. Shorten the visible implementation paragraphs in project cards, with technical detail available in the walkthrough or source. Keep the outcome and status visible.
-3. Offer optional expanded demo viewing if visitor testing shows the small diagram labels remain hard to read. Do not make the illustrations interactive controls or introduce extra diagram tab stops.
-4. Consider merging Approach into project-specific implementation evidence to shorten the page; retain valid section links if navigation is consolidated.
+Captured the actual local interfaces at 1440 × 1100 on October 5, 2026. These are interface captures, not evidence of public deployments or newly verified provider workflows.
+
+| Capture | Provenance and boundary |
+| --- | --- |
+| PulseForge | Existing local dashboard image connected to the local API. Retained synthetic records; the dashboard's stale-analytics warning remains visible. No fresh-data or benchmark claim. |
+| FreightIQ | Local frontend upload screen in its initial state. No document submitted, provider called, or audit result asserted. |
+| ApplyPilot | Existing local Streamlit image, Analyze screen in its initial state. No résumé uploaded or provider/matching result asserted. |
+
+Project cards now use concise architecture summaries and one project-specific engineering decision. Full implementation descriptions remain in the walkthrough. The repeated Approach section and navigation item were consolidated into this evidence; `/approach` and `/#approach` still lead to selected work. Outcomes, status, personal facts, source links, and the résumé are preserved.
+
+## Next visual priority
+
+Offer optional expanded demo viewing if visitor testing shows the small diagram labels remain hard to read. Do not make the illustrations interactive controls or introduce extra diagram tab stops. The new application screenshots can already be opened at full resolution.
 
 ## Verification boundaries
 
