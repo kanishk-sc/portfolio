@@ -9,7 +9,7 @@ export default function Education() {
         <div><dt>Graduation</dt><dd>Expected Dec 2026</dd></div>
         <div><dt>GPA</dt><dd>3.55 / 4.00</dd></div>
       </dl>
-      <p className="coursework">Coursework includes data structures and algorithms, software engineering, operating systems, distributed systems, advanced databases, computer networks, and machine learning.</p>
+      <p className="coursework">Coursework includes data structures and algorithms, software engineering, distributed systems concepts, operating systems, advanced database systems, and machine learning.</p>
     </article>
   );
 }

@@ -1,7 +1,6 @@
 const experience = [
-  { role: "AI & Data Engineering Intern", organization: "Eximiuz Technologies", dates: "Jun 2026 – Aug 2026", description: "Built Python, FastAPI, and SQL-backed services, integrated OpenAI and Claude APIs for structured workflows, and supported delivery through automated tests and GitHub Actions." },
-  { role: "Incoming Student AV Technician", organization: "University of South Florida · Information Technology", dates: "Oct 2026 – Dec 2026", description: "Selected for a 20-hour-per-week internship supporting classroom technology, audio-visual operations, and technical incident response." },
-  { role: "Student Engagement Leader", organization: "Digital Engagement Center", dates: "Aug 2023 – May 2026", description: "Supported a 70+ member operation and built Python automation that reduced recurring manual effort by approximately 25%." },
+  { role: "IT Support Intern – Classroom Technology", organization: "University of South Florida · Information Technology", dates: "Oct 2026 – Present", description: "Troubleshoot classroom technology, collaboration software, audio/video systems, and connectivity issues for faculty and students. Monitor alerts, investigate failures, document recurring issues and resolutions, and coordinate with Classroom AV Operations to restore services." },
+  { role: "AI & Data Engineering Intern", organization: "Eximiuz Technologies · Remote", dates: "Jun 2026 – Aug 2026", description: "Built Python, FastAPI, and SQL-backed services, REST APIs, validation logic, and ETL workflows. Integrated OpenAI and Claude APIs with validation and error handling; debugged services using logs, SQL, tests, and root-cause analysis. Automated testing and deployment through GitHub Actions and documented implementation decisions. Collaborated with staff and a 70+ member organization on Python automation that reduced recurring manual effort by approximately 25%." },
 ];
 
 export default function About() {
