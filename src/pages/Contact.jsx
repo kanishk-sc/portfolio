@@ -1,5 +1,6 @@
 const contactLinks = [
-  { label: "Email", value: "kanishksingh@usf.edu", href: "mailto:kanishksingh@usf.edu" },
+  { label: "Email", value: "kanishksinghchauhan5@gmail.com", href: "mailto:kanishksinghchauhan5@gmail.com" },
+  { label: "University email", value: "kanishksingh@usf.edu", href: "mailto:kanishksingh@usf.edu" },
   { label: "LinkedIn", value: "kanishksinghchauhan", href: "https://linkedin.com/in/kanishksinghchauhan", external: true },
   { label: "GitHub", value: "kanishk-sc", href: "https://github.com/kanishk-sc", external: true },
 ];

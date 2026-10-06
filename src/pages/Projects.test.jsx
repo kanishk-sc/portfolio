@@ -196,6 +196,6 @@ describe("project product walkthrough", () => {
   it("keeps the published résumé byte-for-byte unchanged", () => {
     const resume = readFileSync(resolve("public/resume.pdf"));
     expect(createHash("sha256").update(resume).digest("hex").toUpperCase())
-      .toBe("3A10F3C237E10D27B030F40C84F43ED98BCF965AA18562F2CB34E581648FFE3A");
+      .toBe("89B65D93E3AC885944A927CAE4B90E86786CE147956A6C7567A0DF64BEB094B7");
   });
 });

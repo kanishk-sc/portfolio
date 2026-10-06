@@ -1,8 +1,9 @@
 const skillGroups = [
   { label: "Languages", items: "Python · SQL · Java · TypeScript · JavaScript · C#" },
-  { label: "Backend & product", items: "FastAPI · React · REST APIs · SQLAlchemy · PostgreSQL · MySQL · MongoDB · Authentication" },
-  { label: "Data & AI", items: "Spark · Airflow · dbt · Pandas · NumPy · scikit-learn · ETL/ELT · Data modeling · OpenAI · Claude · LangChain" },
-  { label: "Cloud & delivery", items: "AWS EC2/S3 · Azure · Docker · GitHub Actions · Linux · Redis · Kafka · RabbitMQ · Celery" },
+  { label: "Backend & product", items: "FastAPI · React · REST APIs · SQLAlchemy · PostgreSQL · MySQL · MongoDB · Authentication · Spring Boot · HTML/CSS · API integration" },
+  { label: "Data & AI", items: "Spark · Airflow · dbt · Pandas · NumPy · scikit-learn · ETL/ELT · Data modeling · OpenAI · Claude · LangChain · pgvector" },
+  { label: "Cloud & delivery", items: "AWS EC2/S3 · Azure · Docker · GitHub Actions · Linux · Redis · Kafka · RabbitMQ · Celery · Git · CI/CD" },
+  { label: "Engineering & AI tools", items: "Automated and integration testing · Data modeling · Logging · Debugging · Root-cause analysis · Technical documentation · Codex · Claude Code · Cursor" },
 ];
 
 export default function Skills() {
