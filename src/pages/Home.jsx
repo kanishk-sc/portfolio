@@ -4,13 +4,6 @@ import Education from "./Education";
 import Projects from "./Projects";
 import Skills from "./Skills";
 
-const principles = [
-  { index: "01", title: "Trace the data path", copy: "Make inputs, transformations, storage boundaries, and outputs inspectable from end to end." },
-  { index: "02", title: "Validate model output", copy: "Keep business rules deterministic and use AI where it adds leverage—not where certainty is required." },
-  { index: "03", title: "Design for failure", copy: "Expose job states, validation errors, and recovery paths instead of hiding them behind a happy path." },
-  { index: "04", title: "Ship reproducibly", copy: "Keep environments containerized and verification close to the source with automated quality gates." },
-];
-
 export default function Home() {
   return (
     <main id="main-content" tabIndex={-1}>
@@ -42,25 +35,6 @@ export default function Home() {
       </section>
 
       <Projects />
-
-      <section id="approach" className="section section-muted" aria-labelledby="approach-title">
-        <div className="section-shell">
-          <div className="section-heading split-heading">
-            <div><p className="eyebrow">Engineering approach</p><h2 id="approach-title">Evidence over spectacle.</h2></div>
-            <p>The work is organized around explicit system behavior: what enters, what changes, what can fail, and how the result is verified.</p>
-          </div>
-          <ol className="principles-grid">
-            {principles.map((principle) => (
-              <li key={principle.index}>
-                <span className="principle-index">{principle.index}</span>
-                <h3>{principle.title}</h3>
-                <p>{principle.copy}</p>
-              </li>
-            ))}
-          </ol>
-          <p className="scope-note">These are source-available portfolio systems designed for local reproduction; none is presented as a production deployment.</p>
-        </div>
-      </section>
 
       <About />
 

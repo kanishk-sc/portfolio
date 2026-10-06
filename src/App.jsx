@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 const legacyRoutes = {
   "/about": "experience",
   "/projects": "work",
+  "/approach": "work",
   "/education": "background",
   "/skills": "background",
   "/contact": "contact",
@@ -21,7 +22,8 @@ function HashScroll() {
         return;
       }
 
-      document.getElementById(hash.slice(1))?.scrollIntoView({ block: "start", behavior: "auto" });
+      const section = hash === "#approach" ? "work" : hash.slice(1);
+      document.getElementById(section)?.scrollIntoView({ block: "start", behavior: "auto" });
     });
 
     return () => window.cancelAnimationFrame(frame);

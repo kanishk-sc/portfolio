@@ -1,5 +1,5 @@
 export const VIGNETTE_DISCLOSURE = "Illustrative demo using synthetic data · not a live service";
-export const VIGNETTE_FRAME_DURATION_MS = 1650;
+export const VIGNETTE_FRAME_DURATION_MS = 3500;
 
 export const vignetteData = {
   pulseforge: {

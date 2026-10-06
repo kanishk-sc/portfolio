@@ -234,8 +234,18 @@ export default function ArchitectureWalkthrough({
               <button type="button" className="button-secondary" onClick={handleReplay}>Replay demo</button>
             ) : null}
           </div>
+          <div className="walkthrough-controls" aria-label="Walkthrough stage controls">
+            <button type="button" disabled={isFirstStage}
+              onClick={(event) => handleStageChange(selectedStageIndex - 1, event.detail > 0 ? "pointer" : "keyboard")}>
+              Previous
+            </button>
+            <button type="button" disabled={isLastStage}
+              onClick={(event) => handleStageChange(selectedStageIndex + 1, event.detail > 0 ? "pointer" : "keyboard")}>
+              Next
+            </button>
+          </div>
           <p className="playback-status" aria-hidden="true">
-            {reducedMotion ? "Automatic playback disabled" : playback.status === "idle" ? "Ready" : playback.status}
+            {reducedMotion ? "Automatic playback disabled" : playback.status === "idle" ? "Select a stage or play the story" : playback.status === "complete" ? "Complete · final frame" : playback.status}
           </p>
           <p className="sr-only" role="status" aria-live="polite" aria-atomic="true">{playback.announcement}</p>
         </div>
@@ -260,6 +270,7 @@ export default function ArchitectureWalkthrough({
           </div>
 
           <div className="walkthrough-meta">
+            <p className="walkthrough-status"><strong>Implemented.</strong> {project.implemented}</p>
             <p className="walkthrough-status"><strong>Project status.</strong> {project.walkthroughStatus}</p>
             <a href={project.source} target="_blank" rel="noopener noreferrer">
               View source<span className="sr-only"> for {project.title}, opens in a new tab</span>
@@ -267,28 +278,6 @@ export default function ArchitectureWalkthrough({
           </div>
         </div>
 
-        <div className="walkthrough-controls" aria-label="Walkthrough stage controls">
-          <button
-            type="button"
-            disabled={isFirstStage}
-            onClick={(event) => handleStageChange(
-              selectedStageIndex - 1,
-              event.detail > 0 ? "pointer" : "keyboard",
-            )}
-          >
-            Previous
-          </button>
-          <button
-            type="button"
-            disabled={isLastStage}
-            onClick={(event) => handleStageChange(
-              selectedStageIndex + 1,
-              event.detail > 0 ? "pointer" : "keyboard",
-            )}
-          >
-            Next
-          </button>
-        </div>
       </div>
     </section>
   );

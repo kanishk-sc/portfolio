@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 const navItems = [
   ["Work", "work"],
-  ["Approach", "approach"],
   ["Experience", "experience"],
   ["Background", "background"],
   ["Contact", "contact"],
