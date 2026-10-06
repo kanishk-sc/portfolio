@@ -13,8 +13,9 @@ export default function Home() {
           <h1 id="hero-title">Kanishk Singh Chauhan</h1>
           <p className="hero-statement">I build reliable systems that turn messy inputs into explainable, testable workflows.</p>
           <p className="hero-summary">
-            My work spans full-stack applications, streaming data platforms, and explainable AI workflows—with
-            validation, automated tests, and clear failure handling. Based in Tampa, FL, and open to relocation across the U.S.
+            My work spans streaming data, asynchronous document processing, and evidence-grounded AI—implemented
+            with explicit validation, observable failure states, and reproducible local environments.
+            {" "}I also build full-stack applications. Based in Tampa, FL, and open to relocation across the U.S.
           </p>
           <div className="hero-actions" role="group" aria-label="Primary actions">
             <a className="button button-primary" href="#work">View flagship work</a>

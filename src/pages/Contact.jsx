@@ -1,5 +1,6 @@
 const contactLinks = [
   { label: "Email", value: "kanishksinghchauhan5@gmail.com", href: "mailto:kanishksinghchauhan5@gmail.com" },
+  { label: "University email", value: "kanishksingh@usf.edu", href: "mailto:kanishksingh@usf.edu" },
   { label: "LinkedIn", value: "kanishksinghchauhan", href: "https://linkedin.com/in/kanishksinghchauhan", external: true },
   { label: "GitHub", value: "kanishk-sc", href: "https://github.com/kanishk-sc", external: true },
 ];
@@ -13,7 +14,7 @@ export default function Contact() {
           <h2 id="contact-title">Let’s talk about the work.</h2>
           <p>For engineering roles and project conversations, use email or one of the verified public profiles below. This site does not collect form submissions.</p>
           <div className="contact-actions">
-            <a className="button button-light" href="mailto:kanishksinghchauhan5@gmail.com">Send an email</a>
+            <a className="button button-light" href="mailto:kanishksingh@usf.edu">Send an email</a>
             <a className="button button-outline-light" href="/resume.pdf" target="_blank" rel="noopener noreferrer">
               View résumé<span className="sr-only"> PDF, opens in a new tab</span>
             </a>
