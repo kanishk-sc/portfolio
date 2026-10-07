@@ -7,7 +7,8 @@ describe("current résumé content", () => {
     render(<Home />);
     expect(screen.getByRole("heading", { name: "IT Support Intern – Classroom Technology" })).toBeVisible();
     expect(screen.getByText("Oct 2026 – Present")).toBeVisible();
-    expect(screen.getByRole("heading", { name: "Incoming Student AV Technician" })).toBeVisible();
+    expect(screen.queryByRole("heading", { name: "Incoming Student AV Technician" })).not.toBeInTheDocument();
+    expect(screen.queryByText("Oct 2026 – Dec 2026")).not.toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Student Engagement Leader" })).toBeVisible();
     expect(screen.getByText("Digital Engagement Center")).toBeVisible();
     expect(screen.getByText("Aug 2023 – May 2026")).toBeVisible();
