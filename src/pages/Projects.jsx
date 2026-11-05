@@ -109,9 +109,22 @@ export default function Projects() {
     <section id="work" className="section" aria-labelledby="work-title">
       <div className="section-shell">
         <div className="section-heading split-heading">
-          <div><p className="eyebrow">Selected systems</p><h2 id="work-title">Three problems, built end to end.</h2></div>
-          <p>Each project emphasizes a different systems problem while keeping architecture, validation, and operating constraints visible in the source.</p>
+          <div><p className="eyebrow">Selected work</p><h2 id="work-title">Software to try and explore.</h2></div>
+          <p>A live product and three systems projects, with architecture, validation, and implementation details you can explore.</p>
         </div>
+        <article className="live-project" aria-labelledby="easy-a-title">
+          <div>
+            <p className="eyebrow"><span className="status-dot" aria-hidden="true" />Live project</p>
+            <h3 id="easy-a-title">Easy A — USF Course Planning</h3>
+            <p className="live-project-summary">Co-developed a free application for comparing historical grades, professors, schedules, and available seats at the University of South Florida.</p>
+            <ul className="tag-list" aria-label="Easy A core stack">
+              {["Python", "FastAPI", "PostgreSQL", "React", "TypeScript"].map((technology) => <li key={technology}>{technology}</li>)}
+            </ul>
+          </div>
+          <a className="button button-primary" href="https://easya.fyi/" target="_blank" rel="noopener noreferrer">
+            Open Easy A<span className="sr-only">, opens in a new tab</span>
+          </a>
+        </article>
         <div className="projects-grid">
           {projects.map((project, index) => (
             <article className="project-card" key={project.title}>
