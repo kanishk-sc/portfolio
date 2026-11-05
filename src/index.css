@@ -391,8 +391,8 @@ h2 {
 .project-body .project-outcome { color: var(--ink); font-size: 1.02rem; font-weight: 600; }
 
 .project-preview { margin: 0; border-bottom: 1px solid var(--border); background: #f8f9f7; }
-.project-preview a { display: block; }
-.project-preview img { display: block; width: 100%; height: auto; }
+.project-preview a { display: block; aspect-ratio: 1440 / 722; overflow: hidden; }
+.project-preview img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
 .project-preview figcaption { padding: 12px 20px; color: var(--muted); font-size: 0.75rem; line-height: 1.5; }
 .project-preview figcaption span { color: var(--accent-dark); }
 

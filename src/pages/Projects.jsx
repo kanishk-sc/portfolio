@@ -137,7 +137,7 @@ export default function Projects() {
                 <a href={`/projects/${project.slug}.jpg`} target="_blank" rel="noopener noreferrer"
                   aria-label={`Open full-size ${project.title} interface screenshot in a new tab`}>
                   <img src={`/projects/${project.slug}.jpg`} alt={project.screenshotAlt}
-                    width="1440" height="1100" loading="lazy" decoding="async" />
+                    width="1440" height="722" loading="lazy" decoding="async" />
                 </a>
                 <figcaption>{project.screenshotCaption} <span>Open full-size image.</span></figcaption>
               </figure>
